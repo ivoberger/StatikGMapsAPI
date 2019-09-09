@@ -1,4 +1,4 @@
-/tree/v0.1.0# StatikGMapsAPI
+# StatikGMapsAPI
 Kotlin library to generate URLs for Google's Static Maps API.
 This library allow to set all paramters like markers in a type-safe way and generates a valid static maps url.
 The implementation follows [Google's officical specifications][google-api-specs] and checks that all requirements are met before returning a url.
