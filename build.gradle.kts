@@ -14,6 +14,7 @@ buildscript {
         classpath(Libs.kotlin_gradle_plugin)
         classpath(Libs.dokka_gradle_plugin)
         classpath(Libs.dokka_android_gradle_plugin)
+        classpath("digital.wup:android-maven-publish:3.6.2")
     }
 }
 

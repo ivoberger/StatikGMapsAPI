@@ -1,9 +1,23 @@
 import org.jetbrains.dokka.gradle.DokkaTask
 
 plugins {
-    kotlin("jvm")
+    id("com.android.library")
+    kotlin("android")
+    kotlin("android.extensions")
     id("org.jetbrains.dokka")
-    `maven-publish`
+    id("digital.wup.android-maven-publish")
+}
+
+android {
+    compileSdkVersion(28)
+
+    defaultConfig {
+        minSdkVersion(21)
+        targetSdkVersion(28)
+        versionCode = 1
+        versionName = "1.0"
+    }
+
 }
 
 tasks.named<DokkaTask>("dokka") {
@@ -13,7 +27,7 @@ tasks.named<DokkaTask>("dokka") {
 
 tasks.register<Jar>("sourcesJar") {
     archiveClassifier.set("sources")
-    from(sourceSets.main.get().allSource)
+    from(android.sourceSets.getByName("main").java.srcDirs)
 }
 
 tasks.register<Jar>("javadocJar") {
@@ -26,7 +40,7 @@ tasks.register<Jar>("javadocJar") {
 publishing {
     publications {
         create<MavenPublication>(name) {
-            from(components["java"])
+            from(components["android"])
 
             artifact(tasks["sourcesJar"])
             artifact(tasks["javadocJar"])
@@ -36,5 +50,7 @@ publishing {
 
 dependencies {
     implementation(Libs.kotlin_stdlib_jdk8)
+    implementation("androidx.appcompat:appcompat:1.1.0")
+    implementation("androidx.core:core-ktx:1.1.0")
     testImplementation(Libs.junit)
 }
