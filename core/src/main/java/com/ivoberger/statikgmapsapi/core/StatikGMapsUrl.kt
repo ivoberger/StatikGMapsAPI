@@ -119,8 +119,8 @@ class StatikGMapsUrl(
 
 
         if (downscale
-            && (!premiumPlan && size!!.first <= maxSizeStandard && size!!.second <= maxSizeStandard)
-            && (premiumPlan && size!!.first * scale <= maxSizePremium && size!!.second * scale <= maxSizePremium)
+            && ((!premiumPlan && (size!!.first > maxSizeStandard || size!!.second > maxSizeStandard))
+                    || (premiumPlan && (size!!.first * scale > maxSizePremium || size!!.second * scale > maxSizePremium)))
         ) downscale()
         params += "size" to "${size!!.first}x${size!!.second}"
 
@@ -138,7 +138,7 @@ class StatikGMapsUrl(
         }
 
         if (markers.isNotEmpty()) params += "markers" to markers.toUrlParam()
-        if (path.isNotEmpty()) if (encodePath) params += "path" to "enc:${PolylineUtil.encode(path)}" else params += "path" to path.toUrlParam()
+        if (path.isNotEmpty()) if (encodePath) params += "path" to "enc:${path.encode()}" else params += "path" to path.toUrlParam()
         if (visible.isNotEmpty()) params += "visible" to visible.toUrlParam()
 
         var url = "${if (https) "https" else "http"}://$baseUrl"
@@ -157,9 +157,10 @@ class StatikGMapsUrl(
     }
 
     private fun downscale() {
-        if (premiumPlan) {
-
-        }
+        val maxAllowedSize: Int = if (premiumPlan) maxSizePremium else maxSizeStandard
+        val maxActualSize = size!!.toList().max()!!
+        val scaleFactor: Float = maxAllowedSize / maxActualSize.toFloat()
+        size = (size!!.first * scaleFactor).toInt() to (size!!.second * scaleFactor).toInt()
     }
 
     private fun List<Pair<Double, Double>>.toUrlParam(): String = fold("") { param, pair ->
