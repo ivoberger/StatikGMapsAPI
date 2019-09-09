@@ -10,7 +10,7 @@ The implementation follows [Google's officical specifications][google-api-specs]
 * [x] Automatic check that map size is within [bounds][google-api-imagesize] (supports [premium plan][google-maps-premium])
 * [x] Typesafe paremters: center, markers, path, viewport, zoom level, scale, map type, image format
 * [x] Encode path using [Google's algorithm][google-enc-algo]
-* [ ] Automatically downscale image size preserving the ratio (default API behavior is to cut it off)
+* [x] Automatically downscale image size preserving the ratio (default API behavior is to cut it off)
 * [ ] [Specify locations][google-api-locations] using city names and other addresses
 * [ ] Style markers and paths
 * [ ] Set a [custom map stype][google-maps-styling]
@@ -30,7 +30,9 @@ val staticMap = StatikGMapsUrl("yourApiKey") {
 val mapUrl = staticMap.toString()
 // Result: https://maps.googleapis.com/maps/api/staticmap?key=yourApiKey&size=500x250&scale=2&center=0.0,0.0&zoom=4&markers=51.507222,-0.1275|52.5069704,13.2846501|48.8589507,2.2770204
 ```
-Images are automatically downscaled while preserving the aspect ratio. It is possible to disable this behavior by setting `downscale = false`
+The size parameter is automatically downscaled to fit within Google's restrictions while preserving the aspect ratio.
+The `premiumPlan` and `scale` parameters are taken into account when deciding of downscaling is necessary.
+It is possible to disable this behavior by setting `downscale = false`.
 
 ## Download [![](https://jitpack.io/v/com.ivoberger/StatikGMapsAPI.svg)](https://jitpack.io/#com.ivoberger/StatikGMapsAPI)
 
