@@ -14,7 +14,7 @@ object Libs {
      * http://developer.android.com/tools/extras/support-library.html
      */
     const val core_ktx: String =
-        "androidx.statikgmapsapi.core:statikgmapsapi.core-ktx:" + Versions.core_ktx
+        "androidx.core:core-ktx:" + Versions.core_ktx
 
     /**
      * https://developer.android.com/studio

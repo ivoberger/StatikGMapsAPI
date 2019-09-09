@@ -1,2 +1,2 @@
-include ':app', ':statikgmapsapi.core'
+include ':app', ':core'
 rootProject.name = 'StatikGMapsAPI'

@@ -26,7 +26,7 @@ val staticMap = StatikGMapsUrl("yourApiKey") {
   zoom = 4
   scale = 2
 }
-// get the url, this is where all specification check are performed
+// get the url, this is where all specification checks are performed
 val mapUrl = staticMap.toString()
 // Result: https://maps.googleapis.com/maps/api/staticmap?key=yourApiKey&size=500x250&scale=2&center=0.0,0.0&zoom=4&markers=51.507222,-0.1275|52.5069704,13.2846501|48.8589507,2.2770204
 ```
