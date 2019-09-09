@@ -34,7 +34,7 @@ The size parameter is automatically downscaled to fit within Google's restrictio
 The `premiumPlan` and `scale` parameters are taken into account when deciding of downscaling is necessary.
 It is possible to disable this behavior by setting `downscale = false`.
 
-## Download [![](https://jitpack.io/v/com.ivoberger/StatikGMapsAPI.svg)](https://jitpack.io/#com.ivoberger/StatikGMapsAPI)
+## Download [![](https://jitpack.io/v/com.ivoberger/StatikGMapsAPI.svg)](https://jitpack.io/#com.ivoberger/StatikGMapsAPI) [![](https://jitci.com/gh/ivoberger/StatikGMapsAPI/svg)](https://jitci.com/gh/ivoberger/StatikGMapsAPI)
 
 #### Step 1: Add the JitPack repository to your build file 
 <details><summary>Groovy</summary>
