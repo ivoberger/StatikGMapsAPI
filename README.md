@@ -31,7 +31,7 @@ val mapUrl = staticMap.toString()
 // Result: https://maps.googleapis.com/maps/api/staticmap?key=yourApiKey&size=500x250&scale=2&center=0.0,0.0&zoom=4&markers=51.507222,-0.1275|52.5069704,13.2846501|48.8589507,2.2770204
 ```
 
-## Download [![](https://jitpack.io/v/ivoberger/StatikGMapsAPI.svg)](https://jitpack.io/#ivoberger/StatikGMapsAPI)
+## Download [![](https://jitpack.io/v/com.ivoberger/StatikGMapsAPI.svg)](https://jitpack.io/#com.ivoberger/StatikGMapsAPI)
 
 #### Step 1: Add the JitPack repository to your build file 
 <details><summary>Groovy</summary>
