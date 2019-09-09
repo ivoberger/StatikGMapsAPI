@@ -26,6 +26,8 @@ object Versions {
 
   const val junit: String = "4.12"
 
+  const val org_jetbrains_dokka: String = "0.9.18"
+
   const val org_jetbrains_kotlin: String = "1.3.50"
 
   /**

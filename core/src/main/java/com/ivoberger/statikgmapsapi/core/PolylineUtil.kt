@@ -5,10 +5,8 @@ object PolylineUtil {
      * Encodes a polyline using Google's polyline algorithm
      * (See http://code.google.com/apis/maps/documentation/polylinealgorithm.html for more information).
      *
-     * code derived from : https://gist.github.com/signed0/2031157
-     *
      * @param (x,y)-Coordinates
-     * @return polyline-string
+     * @return encoded polyline
      */
     fun encode(coords: List<Pair<Double, Double>>): String {
         val result: MutableList<String> = mutableListOf()

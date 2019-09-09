@@ -12,8 +12,8 @@ buildscript {
     dependencies {
         classpath(Libs.com_android_tools_build_gradle)
         classpath(Libs.kotlin_gradle_plugin)
-        classpath("org.jetbrains.dokka:dokka-gradle-plugin:0.9.18")
-        classpath("org.jetbrains.dokka:dokka-android-gradle-plugin:0.9.18")
+        classpath(Libs.dokka_gradle_plugin)
+        classpath(Libs.dokka_android_gradle_plugin)
     }
 }
 
