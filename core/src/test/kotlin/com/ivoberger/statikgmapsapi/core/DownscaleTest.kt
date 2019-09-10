@@ -9,7 +9,7 @@ class DownscaleTest {
         var origSize = 300 to 170
         val url = StatikGMapsUrl("placeholder") {
             size = origSize
-            center = .0 to .0
+            center = (.0 to .0).toLocation()
             zoom = 14
         }
         url.toString()
@@ -28,7 +28,7 @@ class DownscaleTest {
         val origRatio = origSize.first / origSize.second.toFloat()
         val url = StatikGMapsUrl("placeholder") {
             size = origSize
-            center = .0 to .0
+            center = (.0 to .0).toLocation()
             zoom = 14
         }
         url.toString()
@@ -43,7 +43,7 @@ class DownscaleTest {
         val origRatio = origSize.first / origSize.second.toFloat()
         val url = StatikGMapsUrl("placeholder") {
             size = origSize
-            center = .0 to .0
+            center = (.0 to .0).toLocation()
             zoom = 14
             scale = 4
             premiumPlan = true

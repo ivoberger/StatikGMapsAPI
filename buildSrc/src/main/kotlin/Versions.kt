@@ -12,10 +12,6 @@ import org.gradle.plugin.use.PluginDependencySpec
  * YOU are responsible for updating manually the dependency version.
  */
 object Versions {
-  const val appcompat: String = "1.1.0"
-
-  const val core_ktx: String = "1.1.0"
-
   const val aapt2: String = "3.5.0-5435860"
 
   const val com_android_tools_build_gradle: String = "3.5.0"
@@ -23,6 +19,8 @@ object Versions {
   const val lint_gradle: String = "26.5.0"
 
   const val de_fayard_buildsrcversions_gradle_plugin: String = "0.4.2"
+
+  const val android_maven_publish: String = "3.6.2"
 
   const val junit: String = "4.12"
 

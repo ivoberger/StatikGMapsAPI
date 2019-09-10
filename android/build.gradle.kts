@@ -9,11 +9,11 @@ plugins {
 }
 
 android {
-    compileSdkVersion(28)
+    compileSdkVersion(29)
 
     defaultConfig {
         minSdkVersion(21)
-        targetSdkVersion(28)
+        targetSdkVersion(29)
         versionCode = 1
         versionName = "1.0"
     }
@@ -50,7 +50,5 @@ publishing {
 
 dependencies {
     implementation(Libs.kotlin_stdlib_jdk8)
-    implementation("androidx.appcompat:appcompat:1.1.0")
-    implementation("androidx.core:core-ktx:1.1.0")
     testImplementation(Libs.junit)
 }

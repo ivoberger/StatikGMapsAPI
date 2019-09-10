@@ -79,7 +79,7 @@ class StatikGMapsUrl(
      * This parameter takes a location as either latitude to longitude pair
      * For more information, see TODO Create location class to accommodate both coordinates and addresses.
      */
-    var center: Pair<Double, Double>? = null
+    var center: Location? = null
     /**
      * (required if markers, path or visible not present)
      * defines the zoom level of the map, which determines the magnification level of the map.
@@ -88,13 +88,15 @@ class StatikGMapsUrl(
      */
     var zoom: Int? = null
 
-    var markers: List<Pair<Double, Double>> = listOf()
-    var path: List<Pair<Double, Double>> = listOf()
-    var visible: List<Pair<Double, Double>> = listOf()
+    var markers: List<Location> = listOf()
+    var path: List<Location> = listOf()
+    var visible: List<Location> = listOf()
     var encodePath: Boolean = false
+    var simplifyPath = false
 
     private val maxSizeStandard = 640
     private val maxSizePremium = 2048
+    private val maxUrlLength = 8192
 
     override fun toString(): String {
         setUp()
@@ -113,7 +115,7 @@ class StatikGMapsUrl(
         ) { "Values for center and zoom or markers, path or visible are required" }
         require(zoom == null || zoom!! in 0..20) { "zoom values are required to be >= 0 and <= 20" }
 
-        val params: MutableList<Pair<String, Any?>> = mutableListOf()
+        val params: MutableMap<String, Any?> = mutableMapOf()
 
         params += "key" to apiKey
 
@@ -138,9 +140,22 @@ class StatikGMapsUrl(
         }
 
         if (markers.isNotEmpty()) params += "markers" to markers.toUrlParam()
-        if (path.isNotEmpty()) if (encodePath) params += "path" to "enc:${path.encode()}" else params += "path" to path.toUrlParam()
+        if (path.isNotEmpty()) params += "path" to if (encodePath) "enc:${path.encode()}" else path.toUrlParam()
         if (visible.isNotEmpty()) params += "visible" to visible.toUrlParam()
 
+        val url = makeUrl(params.toList())
+
+        require(url.length <= maxUrlLength /* || simplifyPath */) {
+            val msg =
+                "The resulting url violated Google's length restriction and automatic simplification is off."
+            if (!encodePath) "$msg Encoding the path can help reduce url length"
+            else msg
+        }
+
+        return url
+    }
+
+    private fun makeUrl(params: List<Pair<String, Any?>>): String {
         var url = "${if (https) "https" else "http"}://$baseUrl"
         url = "$url${params.filter { it.second != null }.joinToString(
             "&",
@@ -156,14 +171,25 @@ class StatikGMapsUrl(
         return url
     }
 
+    private fun simplifyPath(url: String, params: MutableMap<String, Any?>): String {
+        var epsilon = .1
+        var simplifiedUrl = url
+        var simplifiedPath = path
+
+        while (simplifiedUrl.length > maxUrlLength) {
+            simplifiedPath = simplifiedPath.simplify(epsilon)
+            params["path"] =
+                if (encodePath) "enc:${simplifiedPath.encode()}" else simplifiedPath.toUrlParam()
+            simplifiedUrl = makeUrl(params.toList())
+            epsilon += epsilon / 2
+        }
+        return simplifiedUrl
+    }
+
     private fun downscale() {
         val maxAllowedSize: Int = if (premiumPlan) maxSizePremium else maxSizeStandard
         val maxActualSize = size!!.toList().max()!!
         val scaleFactor: Float = maxAllowedSize / maxActualSize.toFloat()
         size = (size!!.first * scaleFactor).toInt() to (size!!.second * scaleFactor).toInt()
-    }
-
-    private fun List<Pair<Double, Double>>.toUrlParam(): String = fold("") { param, pair ->
-        "${if (param.isNotBlank()) "$param|" else ""}${pair.first},${pair.second}"
     }
 }

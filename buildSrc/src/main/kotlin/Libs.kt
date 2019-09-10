@@ -8,16 +8,6 @@ import kotlin.String
  */
 object Libs {
   /**
-   * https://developer.android.com/jetpack/androidx
-   */
-  const val appcompat: String = "androidx.appcompat:appcompat:" + Versions.appcompat
-
-  /**
-   * http://developer.android.com/tools/extras/support-library.html
-   */
-  const val core_ktx: String = "androidx.core:core-ktx:" + Versions.core_ktx
-
-  /**
    * https://developer.android.com/studio
    */
   const val aapt2: String = "com.android.tools.build:aapt2:" + Versions.aapt2
@@ -36,6 +26,12 @@ object Libs {
   const val de_fayard_buildsrcversions_gradle_plugin: String =
       "de.fayard.buildSrcVersions:de.fayard.buildSrcVersions.gradle.plugin:" +
       Versions.de_fayard_buildsrcversions_gradle_plugin
+
+  /**
+   * https://github.com/wupdigital/android-maven-publish
+   */
+  const val android_maven_publish: String = "digital.wup:android-maven-publish:" +
+      Versions.android_maven_publish
 
   /**
    * http://junit.org
