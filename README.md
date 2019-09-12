@@ -8,7 +8,7 @@ The implementation follows [Google's officical specifications][google-api-specs]
 * [x] Ensure that Google's requirements for a valid url are met
 * [x] Support all possbile [parameters][google-api-params]
 * [x] Automatic check that map size is within [bounds][google-api-imagesize] (supports [premium plan][google-maps-premium])
-* [x] Typesafe paremters: center, markers, path, viewport, zoom level, scale, map type, image format
+* [x] Typesafe parameters: center, markers, path, viewport, zoom level, scale, map type, image format
 * [x] Encode path using [Google's algorithm][google-enc-algo]
 * [x] Automatically downscale image size preserving the ratio (default API behavior is to cut it off)
 * [x] [Specify locations][google-api-locations] using city names and other addresses
@@ -42,7 +42,7 @@ val mapUrl = staticMap.toString()
 ```
 
 ## Full Reference
-For detailed information on the parameters see the JavaDoc and the [official specifications][google-api-specs].
+For detailed information on the parameters see the KDoc and the [official specifications][google-api-specs]. Below assigned values are the defaults.
 ```kotlin
 // supply your API key followed by a lambda to set the options
 val staticMap = StatikGMapsUrl("yourApiKey", baseUrl = "customBaseUrlWithoutHttp") {
