@@ -20,6 +20,7 @@ buildscript {
 
 plugins {
     buildSrcVersions
+    jacoco
 }
 
 allprojects {
@@ -32,7 +33,7 @@ allprojects {
 
 subprojects {
     group = "com.ivoberger.statikgmapsapi"
-    version = "0.1.0"
+    version = "0.4.0"
 
     apply(plugin = "org.gradle.jacoco")
 
@@ -49,6 +50,17 @@ tasks {
     }
     named<BuildSrcVersionsTask>("buildSrcVersions") {
         finalizedBy(wrapper)
+    }
+    register<JacocoReport>("codeCoverageReport") {
+        executionData(fileTree(project.rootDir.absolutePath).include(("**/build/jacoco/*.exec")))
+
+        reports {
+            xml.isEnabled = true
+            xml.destination = file("$buildDir/reports/jacoco/report.xml")
+            html.isEnabled = false
+        }
+
+        dependsOn(subprojects.map { it.tasks.named("test") })
     }
 }
 

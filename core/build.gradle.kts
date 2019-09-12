@@ -23,6 +23,13 @@ tasks.register<Jar>("javadocJar") {
     dependsOn(dokka)
 }
 
+tasks.jacocoTestReport {
+    reports {
+        xml.isEnabled = true
+        html.isEnabled = false
+    }
+}
+
 publishing {
     publications {
         create<MavenPublication>(name) {
