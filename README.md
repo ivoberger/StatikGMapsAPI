@@ -6,7 +6,7 @@ The implementation follows [Google's officical specifications][google-api-specs]
 ## Features
 
 * [x] Ensure that Google's requirements for a valid url are met
-* [x] Support all possbile [parameters][google-api-params]
+* [x] Support all possible [parameters][google-api-params]
 * [x] Automatic check that map size is within [bounds][google-api-imagesize] (supports [premium plan][google-maps-premium])
 * [x] Typesafe parameters: center, markers, path, viewport, zoom level, scale, map type, image format
 * [x] Encode path using [Google's algorithm][google-enc-algo]
