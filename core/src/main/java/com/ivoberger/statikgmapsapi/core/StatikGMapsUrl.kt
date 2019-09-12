@@ -145,14 +145,14 @@ class StatikGMapsUrl(
 
         val url = makeUrl(params.toList())
 
-        require(url.length <= maxUrlLength /* || simplifyPath */) {
+        require(url.length <= maxUrlLength || simplifyPath) {
             val msg =
-                "The resulting url violated Google's length restriction and automatic simplification is off."
+                "The resulting url is ${url.length} characters and thus violated Google's length restriction and automatic simplification is off."
             if (!encodePath) "$msg Encoding the path can help reduce url length"
             else msg
         }
 
-        return url
+        return simplifyPath(url, params)
     }
 
     private fun makeUrl(params: List<Pair<String, Any?>>): String {
