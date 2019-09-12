@@ -21,14 +21,14 @@ The implementation follows [Google's officical specifications][google-api-specs]
 // supply your API key followed by a lambda to set the options
 val staticMap = StatikGMapsUrl("yourApiKey") {
   size = 500 to 250
-  center = .0 to .0
-  markers = listOf(51.507222 to -0.1275, 52.5069704 to 13.2846501, 48.8589507 to 2.2770204)
+  center = Location(.0, .0)
+  markers = listOf(Location(51.507222, -0.1275), Location(address = "London"), Location(48.8589507, 2.2770204))
   zoom = 4
   scale = 2
 }
 // get the url, this is where all specification checks are performed
 val mapUrl = staticMap.toString()
-// Result: https://maps.googleapis.com/maps/api/staticmap?key=yourApiKey&size=500x250&scale=2&center=0.0,0.0&zoom=4&markers=51.507222,-0.1275|52.5069704,13.2846501|48.8589507,2.2770204
+// Result: https://maps.googleapis.com/maps/api/staticmap?key=yourApiKey&size=500x250&scale=2&center=0.0,0.0&zoom=4&markers=51.507222,-0.1275|London|48.8589507,2.2770204
 ```
 The size parameter is automatically downscaled to fit within Google's restrictions while preserving the aspect ratio.
 The `premiumPlan` and `scale` parameters are taken into account when deciding of downscaling is necessary.
