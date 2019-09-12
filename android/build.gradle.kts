@@ -18,6 +18,7 @@ android {
         versionName = "1.0"
     }
 
+    sourceSets
 }
 
 tasks.named<DokkaTask>("dokka") {

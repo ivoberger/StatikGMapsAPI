@@ -1,3 +1,4 @@
+import com.android.build.gradle.LibraryExtension
 import de.fayard.BuildSrcVersionsTask
 import org.jetbrains.kotlin.gradle.tasks.KotlinCompile
 
@@ -27,15 +28,14 @@ allprojects {
     repositories {
         google()
         jcenter()
-
     }
+
+    apply(plugin = "org.gradle.jacoco")
 }
 
 subprojects {
     group = "com.ivoberger.statikgmapsapi"
     version = "0.4.0"
-
-    apply(plugin = "org.gradle.jacoco")
 
     tasks.withType<KotlinCompile> { kotlinOptions { jvmTarget = "1.8" } }
 }
@@ -53,6 +53,17 @@ tasks {
     }
     register<JacocoReport>("codeCoverageReport") {
         executionData(fileTree(project.rootDir.absolutePath).include(("**/build/jacoco/*.exec")))
+
+        subprojects.forEach {
+            it.extensions.findByType<LibraryExtension>()?.let { android ->
+                additionalSourceDirs(android.sourceSets.findByName("main")!!.java.sourceFiles)
+                return@forEach
+            }
+            sourceSets(
+                it.extensions.getByName<SourceSetContainer>("sourceSets").named<SourceSet>("main").get()
+            )
+        }
+
 
         reports {
             xml.isEnabled = true
