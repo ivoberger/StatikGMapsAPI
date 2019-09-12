@@ -34,7 +34,9 @@ fun Pair<Double, Double>.toLocation() = Location(first, second)
  */
 fun List<Pair<Double, Double>>.toLocations() = map { it.toLocation() }
 
-
+/**
+ * Converts a list of [Location]s to a valid URL parameter string
+ */
 internal fun List<Location>.toUrlParam(): String = fold("") { param, pair ->
     "${if (param.isNotBlank()) "$param|" else ""}${pair.latitude},${pair.longitude}"
 }

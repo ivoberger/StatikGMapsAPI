@@ -76,8 +76,6 @@ class StatikGMapsUrl(
     /**
      * (required if markers, path or visible not present)
      * defines the center of the map, equidistant from all edges of the map.
-     * This parameter takes a location as either latitude to longitude pair
-     * For more information, see TODO Create location class to accommodate both coordinates and addresses.
      */
     var center: Location? = null
     /**
@@ -88,10 +86,26 @@ class StatikGMapsUrl(
      */
     var zoom: Int? = null
 
+    /**
+     * List of markers to display on the map
+     */
     var markers: List<Location> = listOf()
+    /**
+     * List of locations constituting a path to be drawn on the map
+     */
     var path: List<Location> = listOf()
+    /**
+     * List of locations to be wihtin the maps viewport
+     */
     var visible: List<Location> = listOf()
+    /**
+     * Specifies if the path should be encoded
+     * See https://developers.google.com/maps/documentation/utilities/polylinealgorithm for more information
+     */
     var encodePath: Boolean = false
+    /**
+     * Specifies if the path should be simplified if the url length limit of 8192 is exceeded
+     */
     var simplifyPath = false
 
     private val maxSizeStandard = 640
