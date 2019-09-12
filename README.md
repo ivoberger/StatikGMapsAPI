@@ -1,4 +1,6 @@
-# StatikGMapsAPI
+# StatikGMapsAPI  [![](https://jitpack.io/v/com.ivoberger/StatikGMapsAPI.svg)](https://jitpack.io/#com.ivoberger/StatikGMapsAPI) [![codecov](https://codecov.io/gh/ivoberger/statikgmapsapi/branch/master/graph/badge.svg)](https://codecov.io/gh/ivoberger/statikgmapsapi)
+
+
 Kotlin library to generate URLs for Google's Static Maps API.
 This library allow to set all parameters like markers in a type-safe way and generates a valid static maps url.
 The implementation follows [Google's officical specifications][google-api-specs] and checks that all requirements are met before returning a url.
@@ -72,7 +74,7 @@ val staticMap = StatikGMapsUrl("yourApiKey", baseUrl = "customBaseUrlWithoutHttp
 ```
 
 
-## Download [![](https://jitpack.io/v/com.ivoberger/StatikGMapsAPI.svg)](https://jitpack.io/#com.ivoberger/StatikGMapsAPI) [![](https://jitci.com/gh/ivoberger/StatikGMapsAPI/svg)](https://jitci.com/gh/ivoberger/StatikGMapsAPI)
+## Download
 
 #### Step 1: Add the JitPack repository to your build file 
 <details><summary>Groovy</summary>
