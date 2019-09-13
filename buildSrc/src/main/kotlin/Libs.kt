@@ -34,9 +34,10 @@ object Libs {
       Versions.android_maven_publish
 
   /**
-   * http://junit.org
+   * http://www.github.com/kotlintest/kotlintest
    */
-  const val junit: String = "junit:junit:" + Versions.junit
+  const val kotlintest_runner_junit5: String = "io.kotlintest:kotlintest-runner-junit5:" +
+      Versions.kotlintest_runner_junit5
 
   const val dokka_android_gradle_plugin: String =
       "org.jetbrains.dokka:dokka-android-gradle-plugin:" + Versions.org_jetbrains_dokka

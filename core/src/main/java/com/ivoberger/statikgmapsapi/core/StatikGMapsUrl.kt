@@ -117,10 +117,10 @@ class StatikGMapsUrl(
         require(size != null) { "Size parameter is required" }
         require(
             downscale
-                    || (size!!.first <= maxSizeStandard && size!!.second <= maxSizeStandard)
+                    || (!premiumPlan && size!!.first <= maxSizeStandard && size!!.second <= maxSizeStandard)
                     || (premiumPlan && size!!.first * scale <= maxSizePremium && size!!.second * scale <= maxSizePremium)
         ) { "Allow downscaling or follow the size limitation as specified by Google (https://developers.google.com/maps/documentation/maps-static/dev-guide#Imagesizes)" }
-        require(scale in 1..4 && scale != 3) { "Scale must be one of 1, 2 or 4" }
+        require(scale in 1..2 || (premiumPlan && scale in 1..4 && scale != 3)) { "Scale must be 1, 2 or 4 with premiumPlan or in 1, 2 without" }
         require(
             (center != null && zoom != null)
                     || markers.isNotEmpty()

@@ -12,7 +12,7 @@ data class Location(
     init {
         // require coordinates to be set and in their valid ranges or an address to be set
         require(
-            (latitude != null && longitude != null) || address != null
+            (latitude != null && longitude != null) || !address.isNullOrBlank()
         ) { "A location must be specified by latitude and longitude or a valid address" }
         require(
             (latitude != null && longitude != null && latitude in -90.0..90.0 && longitude in -180.0..180.0)

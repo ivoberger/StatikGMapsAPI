@@ -21,7 +21,7 @@ object Versions {
 
     const val android_maven_publish: String = "3.6.2"
 
-    const val junit: String = "4.12"
+    const val kotlintest_runner_junit5: String = "3.4.1"
 
     const val org_jetbrains_dokka: String = "0.9.18"
 

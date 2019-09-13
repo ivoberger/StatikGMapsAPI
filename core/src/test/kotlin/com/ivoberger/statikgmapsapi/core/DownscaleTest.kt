@@ -1,11 +1,14 @@
 package com.ivoberger.statikgmapsapi.core
 
-import org.junit.Assert.*
-import org.junit.Test
+import io.kotlintest.matchers.plusOrMinus
+import io.kotlintest.shouldBe
+import io.kotlintest.shouldNotBe
+import io.kotlintest.shouldThrow
+import io.kotlintest.specs.StringSpec
 
-class DownscaleTest {
-    @Test
-    fun skipIfNotNecessary() {
+class DownscaleTest : StringSpec({
+
+    "Size should stay the same as it is withing limits" {
         var origSize = 300 to 170
         val url = StatikGMapsUrl("placeholder") {
             size = origSize
@@ -13,35 +16,62 @@ class DownscaleTest {
             zoom = 14
         }
         url.toString()
-        assertEquals(origSize, url.size)
+        url.size shouldBe origSize
+
         origSize = 700 to 170
         url.apply {
             size = origSize
             premiumPlan = true
         }.toString()
-        assertEquals(origSize, url.size)
+
+        url.size shouldBe origSize
     }
 
-    @Test
-    fun withoutPremium() {
-        val origSize = 70 to 770
-        val origRatio = origSize.first / origSize.second.toFloat()
+    "IllegalArgumentException should be thrown as size exceeds limits but downscaling is forbidden" {
         val url = StatikGMapsUrl("placeholder") {
+            center = Location(address = "London")
+            zoom = 14
+            downscale = false
+        }.apply { size = 700 to 100 }
+        print("Test 1: ")
+        shouldThrow<IllegalArgumentException> { url.toString() }
+        url.apply {
+            size = 2049 to 170
+            premiumPlan = true
+        }
+        print("Test 2: ")
+        shouldThrow<IllegalArgumentException> { url.toString() }
+        url.apply {
+            size = 1025 to 170
+            scale = 2
+        }
+        print("Test 3: ")
+        shouldThrow<IllegalArgumentException> { url.toString() }
+        url.apply {
+            size = 513 to 170
+            scale = 4
+        }
+        print("Test 4: ")
+        shouldThrow<IllegalArgumentException> { url.toString() }
+    }
+
+    "Size should be downscaled to fit within specs"  {
+        val tolerance = .05f
+        var origSize = 70 to 770
+        var origRatio = origSize.first / origSize.second.toFloat()
+        var url = StatikGMapsUrl("placeholder") {
             size = origSize
             center = (.0 to .0).toLocation()
             zoom = 14
         }
         url.toString()
-        val downscaledRatio = url.size!!.first / url.size!!.second.toFloat()
-        assertTrue(origRatio - downscaledRatio in -0.05..0.05)
-        assertNotEquals(origSize, url.size)
-    }
 
-    @Test
-    fun withPremium() {
-        val origSize = 1000 to 170
-        val origRatio = origSize.first / origSize.second.toFloat()
-        val url = StatikGMapsUrl("placeholder") {
+        url.size!!.first / url.size!!.second.toFloat() shouldBe (origRatio plusOrMinus tolerance)
+        url.size shouldNotBe origSize
+
+        origSize = 1000 to 170
+        origRatio = origSize.first / origSize.second.toFloat()
+        url = StatikGMapsUrl("placeholder") {
             size = origSize
             center = (.0 to .0).toLocation()
             zoom = 14
@@ -49,8 +79,8 @@ class DownscaleTest {
             premiumPlan = true
         }
         url.toString()
-        val downscaledRatio = url.size!!.first / url.size!!.second.toFloat()
-        assertTrue(origRatio - downscaledRatio in -0.05..0.05)
-        assertNotEquals(origSize, url.size)
+
+        url.size!!.first / url.size!!.second.toFloat() shouldBe (origRatio plusOrMinus tolerance)
+        url.size shouldNotBe origSize
     }
-}
+})
