@@ -27,7 +27,8 @@ jobs:
       - name: Run Tests
         run: ./gradlew test
       - name: Generate Coverage Reports
-        run: ./gradlew codeCoverageReport
-      - uses: codecov/codecov-action@v1.0.2
+        run: ./gradlew jacocoTestReport
+      - name: Upload Coverage Reports to CodeCov
+        uses: codecov/codecov-action@v1.0.2
         with:
           token: ${{secrets.CODECOV_TOKEN}}

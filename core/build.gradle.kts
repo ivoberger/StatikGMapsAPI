@@ -1,26 +1,29 @@
-import org.jetbrains.dokka.gradle.DokkaTask
-
 plugins {
     kotlin("jvm")
     id("org.jetbrains.dokka")
     `maven-publish`
 }
 
-tasks.named<DokkaTask>("dokka") {
-    outputFormat = "html"
-    outputDirectory = "$buildDir/javadoc"
-}
-
-tasks.register<Jar>("sourcesJar") {
-    archiveClassifier.set("sources")
-    from(sourceSets.main.get().allSource)
-}
-
-tasks.register<Jar>("javadocJar") {
-    val dokka = tasks.named<DokkaTask>("dokka")
-    archiveClassifier.set("javadoc")
-    from(dokka.get().outputDirectory)
-    dependsOn(dokka)
+tasks {
+    dokka {
+        outputFormat = "html"
+        outputDirectory = "$buildDir/javadoc"
+    }
+    register<Jar>("javadocJar") {
+        archiveClassifier.set("javadoc")
+        from(dokka.get().outputDirectory)
+        dependsOn(dokka)
+    }
+    jacocoTestReport {
+        reports {
+            xml.isEnabled = true
+            html.isEnabled = false
+        }
+        dependsOn(test)
+    }
+    test {
+        useJUnitPlatform()
+    }
 }
 
 publishing {
@@ -28,7 +31,7 @@ publishing {
         create<MavenPublication>(name) {
             from(components["java"])
 
-            artifact(tasks["sourcesJar"])
+            artifact(tasks["kotlinSourcesJar"])
             artifact(tasks["javadocJar"])
         }
     }
