@@ -78,5 +78,19 @@ class Downscale : StringSpec({
 
         url.size!!.first / url.size!!.second.toFloat() shouldBe (origRatio plusOrMinus tolerance)
         url.size shouldNotBe origSize
+
+        origSize = 100 to 1000
+        origRatio = origSize.first / origSize.second.toFloat()
+        url = StatikGMapsUrl("placeholder") {
+            size = origSize
+            center = (.0 to .0).toLocation()
+            zoom = 14
+            scale = 4
+            premiumPlan = true
+        }
+        url.toString()
+
+        url.size!!.first / url.size!!.second.toFloat() shouldBe (origRatio plusOrMinus tolerance)
+        url.size shouldNotBe origSize
     }
 })
