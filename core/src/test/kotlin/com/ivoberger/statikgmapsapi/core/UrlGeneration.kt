@@ -31,6 +31,14 @@ class UrlGeneration : StringSpec({
         mapUrl.toString() shouldBe "https://maps.googleapis.com/maps/api/staticmap?key=yourApiKey&size=500x250&scale=2&center=0.0,0.0&zoom=4"
 
         mapUrl = StatikGMapsUrl("yourApiKey") {
+            https = false
+            size = testValues.size
+            center = testValues.center
+            zoom = testValues.zoom
+        }
+        mapUrl.toString() shouldBe "http://maps.googleapis.com/maps/api/staticmap?key=yourApiKey&size=500x250&center=0.0,0.0&zoom=4"
+
+        mapUrl = StatikGMapsUrl("yourApiKey") {
             size = testValues.size
             markers = testValues.locationList
         }
