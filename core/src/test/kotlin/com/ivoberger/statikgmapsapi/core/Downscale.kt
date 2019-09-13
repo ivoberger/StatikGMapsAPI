@@ -40,7 +40,7 @@ class Downscale : StringSpec({
         }
         shouldThrow<IllegalArgumentException> { url.toString() }
         url.apply {
-            size = 1025 to 170
+            size = 1000 to 1025
             scale = 2
         }
         shouldThrow<IllegalArgumentException> { url.toString() }
