@@ -8,7 +8,7 @@ import io.kotlintest.matchers.string.shouldNotEndWith
 import io.kotlintest.shouldBe
 import io.kotlintest.specs.StringSpec
 
-class PathTransformationTest : StringSpec({
+class PathTransformation : StringSpec({
 
     val locations = (0..999).map { Location(it % 90.0, it % 180.0) }
 
@@ -42,17 +42,27 @@ class PathTransformationTest : StringSpec({
         locations shouldBeLargerThan simplified
     }
 
-    "Encoded path should match result from Google's reference implementation" {
-        val path = listOf(
-            Location(41.0, -87.0),
-            Location(41.5, -87.0),
-            Location(41.5, -87.75),
-            Location(40.555, -87.555),
-            Location(40.555, -88.0),
-            Location(42.0, -88.0)
-        )
-        // test against result from https://developers.google.com/maps/documentation/utilities/polylineutility
+    val testPath = listOf(
+        Location(41.0, -87.0),
+        Location(41.5, -87.0),
+        Location(41.5, -87.75),
+        Location(40.555, -87.555),
+        Location(40.555, -88.0),
+        Location(42.0, -88.0)
+    )
+    // result from https://developers.google.com/maps/documentation/utilities/polylineutility
+    val encodedTestPath = "_yfyF~d_rO_t`B??nnqCfqwDwae@?f|uAgfyG?"
 
-        path.encode() shouldBe "_yfyF~d_rO_t`B??nnqCfqwDwae@?f|uAgfyG?"
+    "Encoded path should match result from Google's reference implementation" {
+        testPath.encode() shouldBe encodedTestPath
+    }
+
+    "Path should be encoded if set" {
+        val url = StatikGMapsUrl("placeholder") {
+            size = 300 to 170
+            path = testPath
+            encodePath = true
+        }
+        url.toString() shouldEndWith encodedTestPath
     }
 })

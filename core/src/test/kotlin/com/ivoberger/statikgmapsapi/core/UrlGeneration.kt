@@ -3,7 +3,7 @@ package com.ivoberger.statikgmapsapi.core
 import io.kotlintest.shouldBe
 import io.kotlintest.specs.StringSpec
 
-class UrlTest : StringSpec({
+class UrlGeneration : StringSpec({
 
     val testValues = object {
         val size = 500 to 250
@@ -17,8 +17,10 @@ class UrlTest : StringSpec({
         val scale = 2
     }
 
-    "toString should produce a valid url" {
-        var mapUrl = StatikGMapsUrl("yourApiKey") {
+    var mapUrl: StatikGMapsUrl
+
+    "Basic" {
+        mapUrl = StatikGMapsUrl("yourApiKey") {
             size = testValues.size
             center = testValues.center
             zoom = testValues.zoom
@@ -45,7 +47,49 @@ class UrlTest : StringSpec({
             visible = testValues.locationList
         }
         mapUrl.toString() shouldBe "https://maps.googleapis.com/maps/api/staticmap?key=yourApiKey&size=500x250&visible=51.507222,-0.1275|London|48.8589507,2.2770204"
+    }
 
+    "Custom Image Format" {
+        mapUrl = StatikGMapsUrl("yourApiKey") {
+            size = testValues.size
+            center = testValues.center
+            zoom = testValues.zoom
+            imageFormat = ImageFormat.jpg
+        }
+        mapUrl.toString() shouldBe "https://maps.googleapis.com/maps/api/staticmap?key=yourApiKey&size=500x250&format=jpg&center=0.0,0.0&zoom=4"
+    }
+
+    "Custom Map Type" {
+        mapUrl = StatikGMapsUrl("yourApiKey") {
+            size = testValues.size
+            center = testValues.center
+            zoom = testValues.zoom
+            mapType = MapType.satellite
+        }
+        mapUrl.toString() shouldBe "https://maps.googleapis.com/maps/api/staticmap?key=yourApiKey&size=500x250&maptype=satellite&center=0.0,0.0&zoom=4"
+    }
+
+    "Custom Language" {
+        mapUrl = StatikGMapsUrl("yourApiKey") {
+            size = testValues.size
+            center = testValues.center
+            zoom = testValues.zoom
+            language = "de"
+        }
+        mapUrl.toString() shouldBe "https://maps.googleapis.com/maps/api/staticmap?key=yourApiKey&size=500x250&language=de&center=0.0,0.0&zoom=4"
+    }
+
+    "Custom Region" {
+        mapUrl = StatikGMapsUrl("yourApiKey") {
+            size = testValues.size
+            center = testValues.center
+            zoom = testValues.zoom
+            region = "cn"
+        }
+        mapUrl.toString() shouldBe "https://maps.googleapis.com/maps/api/staticmap?key=yourApiKey&size=500x250&region=cn&center=0.0,0.0&zoom=4"
+    }
+
+    "Custom baseUrl" {
         mapUrl = StatikGMapsUrl("yourApiKey", baseUrl = "maps.example.com") {
             size = testValues.size
             center = testValues.center

@@ -3,7 +3,7 @@ package com.ivoberger.statikgmapsapi.core
 import io.kotlintest.shouldThrow
 import io.kotlintest.specs.StringSpec
 
-class LocationTest : StringSpec({
+class LocationDataClass : StringSpec({
     "Should create a valid location" {
         for (lat in -90..90) {
             for (lng in -180..180) {

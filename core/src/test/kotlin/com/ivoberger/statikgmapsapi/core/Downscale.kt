@@ -6,7 +6,7 @@ import io.kotlintest.shouldNotBe
 import io.kotlintest.shouldThrow
 import io.kotlintest.specs.StringSpec
 
-class DownscaleTest : StringSpec({
+class Downscale : StringSpec({
 
     "Size should stay the same as it is withing limits" {
         var origSize = 300 to 170
