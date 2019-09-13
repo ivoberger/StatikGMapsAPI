@@ -49,7 +49,15 @@ class RequirementsChecking : StringSpec({
                 scale = 0
             }.toString()
         }
-        // scale for is only allowed on premium plans
+        shouldThrow<IllegalArgumentException> {
+            StatikGMapsUrl("key") {
+                size = 500 to 500
+                center = Location(.0, .0)
+                zoom = 5
+                scale = 3
+            }.toString()
+        }
+        // scale 4 is only allowed on premium plans
         shouldThrow<IllegalArgumentException> {
             StatikGMapsUrl("key") {
                 size = 500 to 500
@@ -64,6 +72,7 @@ class RequirementsChecking : StringSpec({
                 center = Location(.0, .0)
                 zoom = 5
                 scale = 3
+                premiumPlan = true
             }.toString()
         }
 
