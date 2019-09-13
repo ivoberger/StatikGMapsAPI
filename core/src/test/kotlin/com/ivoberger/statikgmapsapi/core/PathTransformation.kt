@@ -35,7 +35,6 @@ class PathTransformation : StringSpec({
         urlString.length shouldBeLessThanOrEqual 8192
     }
 
-
     "Simplified path should contain" {
         val simplified = locations.simplify(5.0)
         locations shouldContainInOrder simplified

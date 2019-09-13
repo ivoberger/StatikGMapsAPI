@@ -10,8 +10,8 @@ package com.ivoberger.statikgmapsapi.core
  */
 class StatikGMapsUrl(
     private val apiKey: String,
-    var baseUrl: String = "maps.googleapis.com/maps/api/staticmap",
-    val setUp: StatikGMapsUrl.() -> Unit
+    private val baseUrl: String = "maps.googleapis.com/maps/api/staticmap",
+    private val setUp: StatikGMapsUrl.() -> Unit
 ) {
 
     /**
@@ -169,21 +169,13 @@ class StatikGMapsUrl(
         return simplifyPath(url, params)
     }
 
-    private fun makeUrl(params: List<Pair<String, Any?>>): String {
-        var url = "${if (https) "https" else "http"}://$baseUrl"
-        url = "$url${params.filter { it.second != null }.joinToString(
-            "&",
-            "?"
-        ) { paramPair ->
-            "${paramPair.first}=${
-            if (paramPair.second is Pair<*, *>) {
-                val param = (paramPair.second as Pair<*, *>)
-                "${param.first},${param.second}"
-            } else paramPair.second}"
-        }}"
-
-        return url
-    }
+    private fun makeUrl(params: List<Pair<String, Any?>>) =
+        "${if (https) "https" else "http"}://$baseUrl" +
+                params.filter { it.second != null }.joinToString(
+                    "&", "?"
+                ) { paramPair ->
+                    "${paramPair.first}=${paramPair.second}"
+                }
 
     private fun simplifyPath(url: String, params: MutableMap<String, Any?>): String {
         var epsilon = .1

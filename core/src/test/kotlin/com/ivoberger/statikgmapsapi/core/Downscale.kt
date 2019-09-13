@@ -33,25 +33,21 @@ class Downscale : StringSpec({
             zoom = 14
             downscale = false
         }.apply { size = 700 to 100 }
-        print("Test 1: ")
         shouldThrow<IllegalArgumentException> { url.toString() }
         url.apply {
             size = 2049 to 170
             premiumPlan = true
         }
-        print("Test 2: ")
         shouldThrow<IllegalArgumentException> { url.toString() }
         url.apply {
             size = 1025 to 170
             scale = 2
         }
-        print("Test 3: ")
         shouldThrow<IllegalArgumentException> { url.toString() }
         url.apply {
             size = 513 to 170
             scale = 4
         }
-        print("Test 4: ")
         shouldThrow<IllegalArgumentException> { url.toString() }
     }
 
