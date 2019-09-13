@@ -1,4 +1,4 @@
-import org.jetbrains.dokka.gradle.DokkaTask
+import com.dicedmelon.gradle.jacoco.android.JacocoAndroidUnitTestReportExtension
 
 plugins {
     id("com.android.library")
@@ -6,6 +6,7 @@ plugins {
     kotlin("android.extensions")
     id("org.jetbrains.dokka")
     id("digital.wup.android-maven-publish")
+    id("jacoco-android")
 }
 
 android {
@@ -14,28 +15,12 @@ android {
     defaultConfig {
         minSdkVersion(21)
         targetSdkVersion(29)
-        versionCode = 1
-        versionName = "1.0"
     }
-
-    sourceSets
-}
-
-tasks.named<DokkaTask>("dokka") {
-    outputFormat = "html"
-    outputDirectory = "$buildDir/javadoc"
 }
 
 tasks.register<Jar>("sourcesJar") {
     archiveClassifier.set("sources")
     from(android.sourceSets.getByName("main").java.srcDirs)
-}
-
-tasks.register<Jar>("javadocJar") {
-    val dokka = tasks.named<DokkaTask>("dokka")
-    archiveClassifier.set("javadoc")
-    from(dokka.get().outputDirectory)
-    dependsOn(dokka)
 }
 
 publishing {

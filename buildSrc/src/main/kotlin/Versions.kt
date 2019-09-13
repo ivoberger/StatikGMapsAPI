@@ -1,3 +1,4 @@
+import kotlin.String
 import org.gradle.plugin.use.PluginDependenciesSpec
 import org.gradle.plugin.use.PluginDependencySpec
 
@@ -11,30 +12,32 @@ import org.gradle.plugin.use.PluginDependencySpec
  * YOU are responsible for updating manually the dependency version.
  */
 object Versions {
-    const val aapt2: String = "3.5.0-5435860"
+  const val aapt2: String = "3.5.0-5435860"
 
-    const val com_android_tools_build_gradle: String = "3.5.0"
+  const val com_android_tools_build_gradle: String = "3.5.0"
 
-    const val lint_gradle: String = "26.5.0"
+  const val lint_gradle: String = "26.5.0"
 
-    const val de_fayard_buildsrcversions_gradle_plugin: String = "0.5.0"
+  const val jacoco_android: String = "0.1.4"
 
-    const val android_maven_publish: String = "3.6.2"
+  const val de_fayard_buildsrcversions_gradle_plugin: String = "0.5.0"
 
-    const val kotlintest_runner_junit5: String = "3.4.1"
+  const val android_maven_publish: String = "3.6.2"
 
-    const val org_jetbrains_dokka: String = "0.9.18"
+  const val kotlintest_runner_junit5: String = "3.4.1"
 
-    const val org_jetbrains_kotlin: String = "1.3.50"
+  const val org_jetbrains_dokka: String = "0.9.18"
 
-    /**
-     *
-     * See issue 19: How to update Gradle itself?
-     * https://github.com/jmfayard/buildSrcVersions/issues/19
-     */
-    const val gradleLatestVersion: String = "5.6.2"
+  const val org_jetbrains_kotlin: String = "1.3.50"
 
-    const val gradleCurrentVersion: String = "5.6.2"
+  /**
+   *
+   * See issue 19: How to update Gradle itself?
+   * https://github.com/jmfayard/buildSrcVersions/issues/19
+   */
+  const val gradleLatestVersion: String = "5.6.2"
+
+  const val gradleCurrentVersion: String = "5.6.2"
 }
 
 /**
@@ -42,5 +45,5 @@ object Versions {
  * https://github.com/jmfayard/buildSrcVersions/issues/47
  */
 val PluginDependenciesSpec.buildSrcVersions: PluginDependencySpec
-    inline get() =
-        id("de.fayard.buildSrcVersions").version(Versions.de_fayard_buildsrcversions_gradle_plugin)
+  inline get() =
+      id("de.fayard.buildSrcVersions").version(Versions.de_fayard_buildsrcversions_gradle_plugin)

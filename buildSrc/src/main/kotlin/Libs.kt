@@ -23,6 +23,9 @@ object Libs {
    */
   const val lint_gradle: String = "com.android.tools.lint:lint-gradle:" + Versions.lint_gradle
 
+  const val jacoco_android: String = "com.dicedmelon.gradle:jacoco-android:" +
+      Versions.jacoco_android
+
   const val de_fayard_buildsrcversions_gradle_plugin: String =
       "de.fayard.buildSrcVersions:de.fayard.buildSrcVersions.gradle.plugin:" +
       Versions.de_fayard_buildsrcversions_gradle_plugin

@@ -1,25 +1,15 @@
 plugins {
     kotlin("jvm")
-    id("org.jetbrains.dokka")
+    jacoco
     `maven-publish`
 }
 
 tasks {
-    dokka {
-        outputFormat = "html"
-        outputDirectory = "$buildDir/javadoc"
-    }
-    register<Jar>("javadocJar") {
-        archiveClassifier.set("javadoc")
-        from(dokka.get().outputDirectory)
-        dependsOn(dokka)
-    }
     jacocoTestReport {
         reports {
             xml.isEnabled = true
             html.isEnabled = false
         }
-        dependsOn(test)
     }
     test {
         useJUnitPlatform()
