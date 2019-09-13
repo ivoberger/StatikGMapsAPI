@@ -14,7 +14,7 @@ data class Location(
         require(
             (latitude != null && longitude != null) || !address.isNullOrBlank()
         ) { "A location must be specified by latitude and longitude or a valid address" }
-        require((latitude != null && longitude != null && address == null) || (latitude == null && longitude == null && address != null)) {
+        require((latitude != null && address == null) || (latitude == null && longitude == null && address != null)) {
             "A location can't be specified by coordinates and an address"
         }
         require(address != null || (latitude!! in -90.0..90.0 && longitude!! in -180.0..180.0)) { "Latitude must be between -90 and 90, longitude between -180 and 180" }

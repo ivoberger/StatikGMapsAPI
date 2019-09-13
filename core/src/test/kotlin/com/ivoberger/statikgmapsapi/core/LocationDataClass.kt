@@ -14,6 +14,8 @@ class LocationDataClass : StringSpec({
     }
     "Missing parameters should result in an exception" {
         shouldThrow<IllegalArgumentException> { Location() }
+        shouldThrow<IllegalArgumentException> { Location(.0) }
+        shouldThrow<IllegalArgumentException> { Location(longitude = .0) }
     }
     "Providing all parameters should result on an exception" {
         shouldThrow<IllegalArgumentException> { Location(90.0, .0, "London") }
