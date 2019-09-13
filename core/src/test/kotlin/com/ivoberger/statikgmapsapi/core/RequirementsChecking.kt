@@ -66,5 +66,12 @@ class RequirementsChecking : StringSpec({
                 path = (0..799).map { Location(it % 90.0, it % 180.0) }
             }.toString()
         }
+        shouldThrow<IllegalArgumentException> {
+            StatikGMapsUrl("key") {
+                size = 500 to 500
+                path = (0..1500).map { Location(it % 90.0, it % 180.0) }
+                encodePath = true
+            }.toString()
+        }
     }
 })

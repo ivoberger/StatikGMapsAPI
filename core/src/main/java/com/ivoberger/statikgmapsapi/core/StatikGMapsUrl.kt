@@ -148,10 +148,9 @@ class StatikGMapsUrl(
         params += "maptype" to mapType
         params += "format" to imageFormat
 
-        if (center != null && zoom != null) {
-            params += "center" to center
-            params += "zoom" to zoom
-        }
+        if (center != null) params += "center" to center
+        if (zoom != null) params += "zoom" to zoom
+
 
         if (markers.isNotEmpty()) params += "markers" to markers.toUrlParam()
         if (path.isNotEmpty()) params += "path" to if (encodePath) "enc:${path.encode()}" else path.toUrlParam()
