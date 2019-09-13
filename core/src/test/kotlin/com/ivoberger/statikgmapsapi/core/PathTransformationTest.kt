@@ -8,7 +8,7 @@ import io.kotlintest.matchers.string.shouldNotEndWith
 import io.kotlintest.shouldBe
 import io.kotlintest.specs.StringSpec
 
-class PathTransformationTests : StringSpec({
+class PathTransformationTest : StringSpec({
 
     val locations = (0..999).map { Location(it % 90.0, it % 180.0) }
 
