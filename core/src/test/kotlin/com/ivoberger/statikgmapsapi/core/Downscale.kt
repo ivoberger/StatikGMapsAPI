@@ -51,6 +51,8 @@ class Downscale : StringSpec({
         shouldThrow<IllegalArgumentException> { url.toString() }
     }
 
+
+
     "Size should be downscaled to fit within specs"  {
         val tolerance = .05f
         var origSize = 70 to 770

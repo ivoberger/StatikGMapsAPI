@@ -108,19 +108,17 @@ class StatikGMapsUrl(
      */
     var simplifyPath = false
 
-    private val maxSizeStandard = 640
-    private val maxSizePremium = 2048
+    private val maxSize
+        get() = if (premiumPlan) 2048 else 640
+    private val scaledSize
+        get() = if (premiumPlan) size!! * scale else size!!
     private val maxUrlLength = 8192
 
     override fun toString(): String {
         setUp()
         require(size != null) { "Size parameter is required" }
-        require(
-            downscale
-                    || (!premiumPlan && size!!.first <= maxSizeStandard && size!!.second <= maxSizeStandard)
-                    || (premiumPlan && size!!.first * scale <= maxSizePremium && size!!.second * scale <= maxSizePremium)
-        ) { "Allow downscaling or follow the size limitation as specified by Google (https://developers.google.com/maps/documentation/maps-static/dev-guide#Imagesizes)" }
         require(scale in 1..2 || (premiumPlan && scale == 4)) { "Scale must be 1, 2 or 4 with premiumPlan or in 1, 2 without" }
+        require(downscale || scaledSize.lessThanOrEqualTo(maxSize)) { "Allow downscaling or follow the size limitation as specified by Google (https://developers.google.com/maps/documentation/maps-static/dev-guide#Imagesizes)" }
         require(
             (center != null && zoom != null)
                     || markers.isNotEmpty()
@@ -134,10 +132,7 @@ class StatikGMapsUrl(
         params += "key" to apiKey
 
 
-        if (downscale
-            && ((!premiumPlan && (size!!.first > maxSizeStandard || size!!.second > maxSizeStandard))
-                    || (premiumPlan && (size!!.first * scale > maxSizePremium || size!!.second * scale > maxSizePremium)))
-        ) downscale()
+        if (downscale && scaledSize.atLeastOneLargerThan(maxSize)) downscale()
         params += "size" to "${size!!.first}x${size!!.second}"
 
         if (scale != 1) params += "scale" to scale
@@ -192,9 +187,8 @@ class StatikGMapsUrl(
     }
 
     private fun downscale() {
-        val maxAllowedSize: Int = if (premiumPlan) maxSizePremium else maxSizeStandard
         val maxActualSize = size!!.toList().max()!!
-        val scaleFactor: Float = maxAllowedSize / maxActualSize.toFloat()
-        size = (size!!.first * scaleFactor).toInt() to (size!!.second * scaleFactor).toInt()
+        val ratio: Float = maxSize / maxActualSize.toFloat()
+        size = (size!!.first * ratio).toInt() to (size!!.second * ratio).toInt()
     }
 }
