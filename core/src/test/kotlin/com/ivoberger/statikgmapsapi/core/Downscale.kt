@@ -8,12 +8,32 @@ import io.kotlintest.specs.StringSpec
 
 class Downscale : StringSpec({
 
-    "Size should stay the same as it is withing limits" {
+    "Size should stay the same as it is within limits" {
         var origSize = 300 to 170
         val url = StatikGMapsUrl("placeholder") {
             size = origSize
             center = Location(.0, .0)
             zoom = 14
+        }
+        url.toString()
+        url.size shouldBe origSize
+
+        origSize = 700 to 170
+        url.apply {
+            size = origSize
+            premiumPlan = true
+        }.toString()
+
+        url.size shouldBe origSize
+    }
+
+    "Disallowing downscale should not result in an exception when size is within limits" {
+        var origSize = 300 to 170
+        val url = StatikGMapsUrl("placeholder") {
+            size = origSize
+            center = Location(.0, .0)
+            zoom = 14
+            downscale = false
         }
         url.toString()
         url.size shouldBe origSize
@@ -40,12 +60,12 @@ class Downscale : StringSpec({
         }
         shouldThrow<IllegalArgumentException> { url.toString() }
         url.apply {
-            size = 1000 to 1025
+            size = 500 to 1030
             scale = 2
         }
         shouldThrow<IllegalArgumentException> { url.toString() }
         url.apply {
-            size = 513 to 170
+            size = 500 to 600
             scale = 4
         }
         shouldThrow<IllegalArgumentException> { url.toString() }
