@@ -17,8 +17,10 @@ class LocationDataClass : StringSpec({
         shouldThrow<IllegalArgumentException> { Location(.0) }
         shouldThrow<IllegalArgumentException> { Location(longitude = .0) }
     }
-    "Providing all parameters should result on an exception" {
+    "Providing wrong combinations of parameters should result on an exception" {
         shouldThrow<IllegalArgumentException> { Location(90.0, .0, "London") }
+        shouldThrow<IllegalArgumentException> { Location(longitude = .0, address = "London") }
+        shouldThrow<IllegalArgumentException> { Location(.0, address = "London") }
     }
     "Out of range coordinates should result in an exception" {
         shouldThrow<IllegalArgumentException> { Location(91.0, .0) }
