@@ -12,7 +12,7 @@ class Downscale : StringSpec({
         var origSize = 300 to 170
         val url = StatikGMapsUrl("placeholder") {
             size = origSize
-            center = (.0 to .0).toLocation()
+            center = Location(.0, .0)
             zoom = 14
         }
         url.toString()
@@ -57,7 +57,19 @@ class Downscale : StringSpec({
         var origRatio = origSize.first / origSize.second.toFloat()
         var url = StatikGMapsUrl("placeholder") {
             size = origSize
-            center = (.0 to .0).toLocation()
+            center = Location(.0, .0)
+            zoom = 14
+        }
+        url.toString()
+
+        url.size!!.first / url.size!!.second.toFloat() shouldBe (origRatio plusOrMinus tolerance)
+        url.size shouldNotBe origSize
+
+        origSize = 770 to 170
+        origRatio = origSize.first / origSize.second.toFloat()
+        url = StatikGMapsUrl("placeholder") {
+            size = origSize
+            center = Location(.0, .0)
             zoom = 14
         }
         url.toString()
@@ -69,7 +81,7 @@ class Downscale : StringSpec({
         origRatio = origSize.first / origSize.second.toFloat()
         url = StatikGMapsUrl("placeholder") {
             size = origSize
-            center = (.0 to .0).toLocation()
+            center = Location(.0, .0)
             zoom = 14
             scale = 4
             premiumPlan = true
@@ -83,7 +95,7 @@ class Downscale : StringSpec({
         origRatio = origSize.first / origSize.second.toFloat()
         url = StatikGMapsUrl("placeholder") {
             size = origSize
-            center = (.0 to .0).toLocation()
+            center = Location(.0, .0)
             zoom = 14
             scale = 4
             premiumPlan = true
