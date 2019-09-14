@@ -10,16 +10,16 @@ import io.kotlintest.specs.StringSpec
 
 class PathTransformation : StringSpec({
 
-    val locations = (0..999).map { Location(it % 90.0, it % 180.0) }
+    val locations = (0..999).map { StatikMapsLocation(it % 90.0, it % 180.0) }
 
     "ToString should automatically detect if simplification is necessary"  {
         var url = StatikGMapsUrl("placeholder") {
             size = 300 to 170
             path = listOf(
-                Location(.0, .0),
-                Location(.0, 10.0),
-                Location(5.0, .0),
-                Location(7.0, .6)
+                StatikMapsLocation(.0, .0),
+                StatikMapsLocation(.0, 10.0),
+                StatikMapsLocation(5.0, .0),
+                StatikMapsLocation(7.0, .6)
             )
         }
         url.toString() shouldEndWith url.path.toUrlParam()
@@ -42,12 +42,12 @@ class PathTransformation : StringSpec({
     }
 
     val testPath = listOf(
-        Location(41.0, -87.0),
-        Location(41.5, -87.0),
-        Location(41.5, -87.75),
-        Location(40.555, -87.555),
-        Location(40.555, -88.0),
-        Location(42.0, -88.0)
+        StatikMapsLocation(41.0, -87.0),
+        StatikMapsLocation(41.5, -87.0),
+        StatikMapsLocation(41.5, -87.75),
+        StatikMapsLocation(40.555, -87.555),
+        StatikMapsLocation(40.555, -88.0),
+        StatikMapsLocation(42.0, -88.0)
     )
     // result from https://developers.google.com/maps/documentation/utilities/polylineutility
     val encodedTestPath = "_yfyF~d_rO_t`B??nnqCfqwDwae@?f|uAgfyG?"

@@ -33,8 +33,8 @@ URL does not exceed 8192 characters.
 // supply your API key followed by a lambda to set the options
 val staticMap = StatikGMapsUrl("yourApiKey") {
   size = 500 to 250
-  center = Location(.0, .0)
-  markers = listOf(Location(51.507222, -0.1275), Location(address = "London"), Location(48.8589507, 2.2770204))
+  center = StatikMapsLocation(.0, .0)
+  markers = listOf(StatikMapsLocation(51.507222, -0.1275), StatikMapsLocation(address = "London"), StatikMapsLocation(48.8589507, 2.2770204))
   zoom = 4
   scale = 2
 }
@@ -53,9 +53,9 @@ val staticMap = StatikGMapsUrl("yourApiKey", baseUrl = "customBaseUrlWithoutHttp
   // either center & zoom or markers, path or visible required
   center = null
   zoom = null
-  markers = listOf<Location>() // each list entry equals one marker
-  path = listOf<Location>()
-  visible = listOf<Location>() // specifies locations that should be in the viewport
+  markers = listOf<StatikMapsLocation>() // each list entry equals one marker
+  path = listOf<StatikMapsLocation>()
+  visible = listOf<StatikMapsLocation>() // specifies locations that should be in the viewport
   
   scale = 1
   mapType = null
@@ -129,7 +129,7 @@ dependencies {
 
 [google-api-specs]: https://developers.google.com/maps/documentation/maps-static/dev-guide
 [google-api-params]: https://developers.google.com/maps/documentation/maps-static/dev-guide#URL_Parameters
-[google-api-locations]: https://developers.google.com/maps/documentation/maps-static/dev-guide#Locations
+[google-api-locations]: https://developers.google.com/maps/documentation/maps-static/dev-guide#StatikMapsLocations
 [google-api-url]: https://developers.google.com/maps/documentation/maps-static/dev-guide#url-size-restriction
 [google-maps-styling]: https://developers.google.com/maps/documentation/maps-static/styling
 [google-api-imagesize]: https://developers.google.com/maps/documentation/maps-static/dev-guide#Imagesizes

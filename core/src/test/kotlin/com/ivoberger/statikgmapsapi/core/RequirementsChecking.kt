@@ -14,7 +14,7 @@ class RequirementsChecking : StringSpec({
         shouldThrow<IllegalArgumentException> {
             StatikGMapsUrl("key") {
                 size = 500 to 500
-                center = Location(.0, .0)
+                center = StatikMapsLocation(.0, .0)
             }.toString()
         }
         shouldThrow<IllegalArgumentException> {
@@ -28,14 +28,14 @@ class RequirementsChecking : StringSpec({
         shouldThrow<IllegalArgumentException> {
             StatikGMapsUrl("key") {
                 size = 500 to 500
-                center = Location(.0, .0)
+                center = StatikMapsLocation(.0, .0)
                 zoom = 21
             }.toString()
         }
         shouldThrow<IllegalArgumentException> {
             StatikGMapsUrl("key") {
                 size = 500 to 500
-                center = Location(.0, .0)
+                center = StatikMapsLocation(.0, .0)
                 zoom = -1
             }.toString()
         }
@@ -44,7 +44,7 @@ class RequirementsChecking : StringSpec({
         shouldThrow<IllegalArgumentException> {
             StatikGMapsUrl("key") {
                 size = 500 to 500
-                center = Location(.0, .0)
+                center = StatikMapsLocation(.0, .0)
                 zoom = 5
                 scale = 0
             }.toString()
@@ -52,7 +52,7 @@ class RequirementsChecking : StringSpec({
         shouldThrow<IllegalArgumentException> {
             StatikGMapsUrl("key") {
                 size = 500 to 500
-                center = Location(.0, .0)
+                center = StatikMapsLocation(.0, .0)
                 zoom = 5
                 scale = 3
             }.toString()
@@ -61,7 +61,7 @@ class RequirementsChecking : StringSpec({
         shouldThrow<IllegalArgumentException> {
             StatikGMapsUrl("key") {
                 size = 500 to 500
-                center = Location(.0, .0)
+                center = StatikMapsLocation(.0, .0)
                 zoom = 5
                 scale = 4
             }.toString()
@@ -69,7 +69,7 @@ class RequirementsChecking : StringSpec({
         shouldThrow<IllegalArgumentException> {
             StatikGMapsUrl("key") {
                 size = 500 to 500
-                center = Location(.0, .0)
+                center = StatikMapsLocation(.0, .0)
                 zoom = 5
                 scale = 3
                 premiumPlan = true
@@ -81,13 +81,13 @@ class RequirementsChecking : StringSpec({
         shouldThrow<IllegalArgumentException> {
             StatikGMapsUrl("key") {
                 size = 500 to 500
-                path = (0..799).map { Location(it % 90.0, it % 180.0) }
+                path = (0..799).map { StatikMapsLocation(it % 90.0, it % 180.0) }
             }.toString()
         }
         shouldThrow<IllegalArgumentException> {
             StatikGMapsUrl("key") {
                 size = 500 to 500
-                path = (0..1500).map { Location(it % 90.0, it % 180.0) }
+                path = (0..1500).map { StatikMapsLocation(it % 90.0, it % 180.0) }
                 encodePath = true
             }.toString()
         }

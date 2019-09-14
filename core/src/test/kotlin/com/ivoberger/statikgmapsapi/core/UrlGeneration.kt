@@ -7,11 +7,11 @@ class UrlGeneration : StringSpec({
 
     val testValues = object {
         val size = 500 to 250
-        val center = Location(.0, .0)
-        val locationList = listOf(
-            Location(51.507222, -0.1275),
-            Location(address = "London"),
-            Location(48.8589507, 2.2770204)
+        val center = StatikMapsLocation(.0, .0)
+        val locationList = mutableListOf(
+            StatikMapsLocation(51.507222, -0.1275),
+            StatikMapsLocation(address = "London"),
+            StatikMapsLocation(48.8589507, 2.2770204)
         )
         val zoom = 4
         val scale = 2

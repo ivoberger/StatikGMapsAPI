@@ -20,6 +20,8 @@ object Versions {
 
   const val jacoco_android: String = "0.1.4"
 
+  const val com_google_android_gms: String = "17.0.0"
+
   const val de_fayard_buildsrcversions_gradle_plugin: String = "0.5.0"
 
   const val android_maven_publish: String = "3.6.2"

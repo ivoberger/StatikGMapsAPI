@@ -77,7 +77,7 @@ class StatikGMapsUrl(
      * (required if markers, path or visible not present)
      * defines the center of the map, equidistant from all edges of the map.
      */
-    var center: Location? = null
+    var center: StatikMapsLocation? = null
     /**
      * (required if markers, path or visible not present)
      * defines the zoom level of the map, which determines the magnification level of the map.
@@ -89,15 +89,15 @@ class StatikGMapsUrl(
     /**
      * List of markers to display on the map
      */
-    var markers: List<Location> = listOf()
+    var markers: MutableList<StatikMapsLocation> = mutableListOf()
     /**
      * List of locations constituting a path to be drawn on the map
      */
-    var path: List<Location> = listOf()
+    var path: List<StatikMapsLocation> = listOf()
     /**
      * List of locations to be wihtin the maps viewport
      */
-    var visible: List<Location> = listOf()
+    var visible: MutableList<StatikMapsLocation> = mutableListOf()
     /**
      * Specifies if the path should be encoded
      * See https://developers.google.com/maps/documentation/utilities/polylinealgorithm for more information

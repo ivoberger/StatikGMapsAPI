@@ -26,6 +26,12 @@ object Libs {
   const val jacoco_android: String = "com.dicedmelon.gradle:jacoco-android:" +
       Versions.jacoco_android
 
+  const val play_services_location: String = "com.google.android.gms:play-services-location:" +
+      Versions.com_google_android_gms
+
+  const val play_services_maps: String = "com.google.android.gms:play-services-maps:" +
+      Versions.com_google_android_gms
+
   const val de_fayard_buildsrcversions_gradle_plugin: String =
       "de.fayard.buildSrcVersions:de.fayard.buildSrcVersions.gradle.plugin:" +
       Versions.de_fayard_buildsrcversions_gradle_plugin

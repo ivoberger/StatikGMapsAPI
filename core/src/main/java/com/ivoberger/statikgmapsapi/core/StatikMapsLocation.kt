@@ -4,7 +4,7 @@ package com.ivoberger.statikgmapsapi.core
  * Container to hold a location either by latitude and longitude or an address
  * Latitude and longitude will be checked for validity, addresses won't.
  */
-data class Location(
+data class StatikMapsLocation(
     val latitude: Double? = null,
     val longitude: Double? = null,
     val address: String? = null
@@ -25,18 +25,18 @@ data class Location(
 
 
 /**
- * Creates a [Location] from a [Pair] of [Double]
+ * Creates a [StatikMapsLocation] from a [Pair] of [Double]
  */
-fun Pair<Double, Double>.toLocation() = Location(first, second)
+fun Pair<Double, Double>.toLocation() = StatikMapsLocation(first, second)
 
 /**
- * Creates a [List] of [Location] from a [List] of [Pair] of [Double]
+ * Creates a [List] of [StatikMapsLocation] from a [List] of [Pair] of [Double]
  */
 fun List<Pair<Double, Double>>.toLocations() = map { it.toLocation() }
 
 /**
- * Converts a list of [Location]s to a valid URL parameter string
+ * Converts a list of [StatikMapsLocation]s to a valid URL parameter string
  */
-internal fun List<Location>.toUrlParam(): String = fold("") { param, location ->
+internal fun List<StatikMapsLocation>.toUrlParam(): String = fold("") { param, location ->
     "${if (param.isNotBlank()) "$param|" else ""}$location"
 }

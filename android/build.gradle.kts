@@ -1,5 +1,3 @@
-import com.dicedmelon.gradle.jacoco.android.JacocoAndroidUnitTestReportExtension
-
 plugins {
     id("com.android.library")
     kotlin("android")
@@ -32,4 +30,10 @@ publishing {
             artifact(tasks["javadocJar"])
         }
     }
+}
+
+dependencies {
+    api(Libs.play_services_location)
+    api(Libs.play_services_maps)
+    api(project(":core"))
 }

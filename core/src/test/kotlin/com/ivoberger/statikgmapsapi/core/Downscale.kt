@@ -12,7 +12,7 @@ class Downscale : StringSpec({
         var origSize = 300 to 170
         val url = StatikGMapsUrl("placeholder") {
             size = origSize
-            center = Location(.0, .0)
+            center = StatikMapsLocation(.0, .0)
             zoom = 14
         }
         url.toString()
@@ -31,7 +31,7 @@ class Downscale : StringSpec({
         var origSize = 300 to 170
         val url = StatikGMapsUrl("placeholder") {
             size = origSize
-            center = Location(.0, .0)
+            center = StatikMapsLocation(.0, .0)
             zoom = 14
             downscale = false
         }
@@ -49,7 +49,7 @@ class Downscale : StringSpec({
 
     "IllegalArgumentException should be thrown as size exceeds limits but downscaling is forbidden" {
         val url = StatikGMapsUrl("placeholder") {
-            center = Location(address = "London")
+            center = StatikMapsLocation(address = "London")
             zoom = 14
             downscale = false
         }.apply { size = 700 to 100 }
@@ -79,7 +79,7 @@ class Downscale : StringSpec({
         var origRatio = origSize.first / origSize.second.toFloat()
         var url = StatikGMapsUrl("placeholder") {
             size = origSize
-            center = Location(.0, .0)
+            center = StatikMapsLocation(.0, .0)
             zoom = 14
         }
         url.toString()
@@ -91,7 +91,7 @@ class Downscale : StringSpec({
         origRatio = origSize.first / origSize.second.toFloat()
         url = StatikGMapsUrl("placeholder") {
             size = origSize
-            center = Location(.0, .0)
+            center = StatikMapsLocation(.0, .0)
             zoom = 14
         }
         url.toString()
@@ -103,7 +103,7 @@ class Downscale : StringSpec({
         origRatio = origSize.first / origSize.second.toFloat()
         url = StatikGMapsUrl("placeholder") {
             size = origSize
-            center = Location(.0, .0)
+            center = StatikMapsLocation(.0, .0)
             zoom = 14
             scale = 4
             premiumPlan = true
@@ -117,7 +117,7 @@ class Downscale : StringSpec({
         origRatio = origSize.first / origSize.second.toFloat()
         url = StatikGMapsUrl("placeholder") {
             size = origSize
-            center = Location(.0, .0)
+            center = StatikMapsLocation(.0, .0)
             zoom = 14
             scale = 4
             premiumPlan = true

@@ -34,7 +34,7 @@ allprojects {
 
 subprojects {
     group = "com.ivoberger.statikgmapsapi"
-    version = "0.4.0"
+    version = "0.5.0"
 
     apply(plugin = "org.jetbrains.dokka")
 
