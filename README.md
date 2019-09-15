@@ -17,6 +17,7 @@ The implementation follows [Google's officical specifications][google-api-specs]
 * [ ] Style markers and paths
 * [ ] Set a [custom map style][google-maps-styling]
 * [x] Automatic path compression if the [URL length limit][google-api-url] is surpassed
+* [x] Android module with extensions for Android + GMaps Library for Android types
 
 ### Downscaling
 The size parameter is automatically downscaled to fit within Google's restrictions while preserving the aspect ratio.
@@ -103,12 +104,13 @@ allprojects {
 </details>
 
 #### Step 2: Add dependency
+Available modules are `core` for pure JVM projects and `android` for integration with Android and GMaps data types.
 
 <details><summary>Groovy</summary>
 
 ```groovy
 dependencies {
-  implementation 'com.ivoberger:StatikGMapsAPI:latestVersion'
+  implementation 'com.ivoberger.StatikGMapsAPI:moduleName:latestVersion'
 }
 ```
 
@@ -117,7 +119,7 @@ dependencies {
 
 ```kotlin
 dependencies {
-  implementation("com.ivoberger:StatikGMapsAPI:latestVersion")
+  implementation("com.ivoberger.StatikGMapsAPI:moduleName:latestVersion")
 }
 ```
 
