@@ -16,7 +16,7 @@ jobs:
         uses: actions/cache@v1
         with:
           path: ~/.gradle/caches
-          key: ${{ runner.OS }}-build-${{ hashFiles('**/Versions.kt') }}
+          key: build-${{ hashFiles('**/Versions.kt') }}
       - name: Build with Gradle
         run: ./gradlew build
 
@@ -33,7 +33,7 @@ jobs:
         uses: actions/cache@v1
         with:
           path: ~/.gradle/caches
-          key: ${{ runner.OS }}-build-${{ hashFiles('**/Versions.kt') }}
+          key: test-${{ hashFiles('**/Versions.kt') }}
       - name: Run Tests
         run: ./gradlew test
       - name: Generate Coverage Reports
