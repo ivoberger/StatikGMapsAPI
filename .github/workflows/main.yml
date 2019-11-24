@@ -15,7 +15,7 @@ jobs:
       - name: Cache Gradle Dependencies
         uses: actions/cache@v1
         with:
-          path: .gradle
+          path: ~/.gradle
           key: ${{ runner.OS }}-build-${{ hashFiles('**/Versions.kt') }}
       - name: Build with Gradle
         run: ./gradlew build
@@ -32,13 +32,13 @@ jobs:
       - name: Cache Gradle Dependencies
         uses: actions/cache@v1
         with:
-          path: .gradle
+          path: ~/.gradle
           key: ${{ runner.OS }}-build-${{ hashFiles('**/Versions.kt') }}
       - name: Run Tests
         run: ./gradlew test
       - name: Generate Coverage Reports
         run: ./gradlew jacocoTestReport
       - name: Upload Coverage Reports to CodeCov
-        uses: codecov/codecov-action@v1.0.2
+        uses: codecov/codecov-action@v1
         with:
           token: ${{secrets.CODECOV_TOKEN}}
