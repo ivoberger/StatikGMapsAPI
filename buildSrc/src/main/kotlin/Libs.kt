@@ -7,33 +7,11 @@ import kotlin.String
  *   `$ ./gradlew buildSrcVersions`
  */
 object Libs {
-    const val de_fayard_buildsrcversions_gradle_plugin: String =
-            "de.fayard.buildSrcVersions:de.fayard.buildSrcVersions.gradle.plugin:" +
-            Versions.de_fayard_buildsrcversions_gradle_plugin
-
-    /**
-     * https://developer.android.com/studio
-     */
-    const val com_android_tools_build_gradle: String = "com.android.tools.build:gradle:" +
-            Versions.com_android_tools_build_gradle
-
-    /**
-     * http://www.github.com/kotlintest/kotlintest
-     */
-    const val kotlintest_runner_junit5: String = "io.kotlintest:kotlintest-runner-junit5:" +
-            Versions.kotlintest_runner_junit5
-
     const val play_services_location: String = "com.google.android.gms:play-services-location:" +
             Versions.com_google_android_gms
 
     const val play_services_maps: String = "com.google.android.gms:play-services-maps:" +
             Versions.com_google_android_gms
-
-    /**
-     * https://github.com/wupdigital/android-maven-publish
-     */
-    const val android_maven_publish: String = "digital.wup:android-maven-publish:" +
-            Versions.android_maven_publish
 
     /**
      * https://kotlinlang.org/
@@ -72,6 +50,28 @@ object Libs {
 
     const val dokka_gradle_plugin: String = "org.jetbrains.dokka:dokka-gradle-plugin:" +
             Versions.org_jetbrains_dokka
+
+    /**
+     * https://developer.android.com/studio
+     */
+    const val com_android_tools_build_gradle: String = "com.android.tools.build:gradle:" +
+            Versions.com_android_tools_build_gradle
+
+    const val de_fayard_buildsrcversions_gradle_plugin: String =
+            "de.fayard.buildSrcVersions:de.fayard.buildSrcVersions.gradle.plugin:" +
+            Versions.de_fayard_buildsrcversions_gradle_plugin
+
+    /**
+     * http://www.github.com/kotlintest/kotlintest
+     */
+    const val kotlintest_runner_junit5: String = "io.kotlintest:kotlintest-runner-junit5:" +
+            Versions.kotlintest_runner_junit5
+
+    /**
+     * https://github.com/wupdigital/android-maven-publish
+     */
+    const val android_maven_publish: String = "digital.wup:android-maven-publish:" +
+            Versions.android_maven_publish
 
     const val jacoco_android: String = "com.dicedmelon.gradle:jacoco-android:" +
             Versions.jacoco_android

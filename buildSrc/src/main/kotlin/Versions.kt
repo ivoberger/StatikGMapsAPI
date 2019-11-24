@@ -12,32 +12,32 @@ import org.gradle.plugin.use.PluginDependencySpec
  * YOU are responsible for updating manually the dependency version.
  */
 object Versions {
-    const val de_fayard_buildsrcversions_gradle_plugin: String = "0.6.4"
-
-    const val com_android_tools_build_gradle: String = "3.5.1"
-
-    const val kotlintest_runner_junit5: String = "3.4.2"
-
     const val com_google_android_gms: String = "17.0.0"
 
-    const val android_maven_publish: String = "3.6.2"
-
-    const val org_jetbrains_kotlin: String = "1.3.50"
+    const val org_jetbrains_kotlin: String = "1.3.60"
 
     const val org_jetbrains_dokka: String = "0.9.18"
 
+    const val com_android_tools_build_gradle: String = "3.5.2"
+
+    const val de_fayard_buildsrcversions_gradle_plugin: String = "0.7.0"
+
+    const val kotlintest_runner_junit5: String = "3.4.2"
+
+    const val android_maven_publish: String = "3.6.3"
+
     const val jacoco_android: String = "0.1.4"
 
-    const val lint_gradle: String = "26.5.1"
+    const val lint_gradle: String = "26.5.2"
 
-    const val aapt2: String = "3.5.1-5435860"
+    const val aapt2: String = "3.5.2-5435860"
 
     /**
      * Current version: "5.6.2"
      * See issue 19: How to update Gradle itself?
      * https://github.com/jmfayard/buildSrcVersions/issues/19
      */
-    const val gradleLatestVersion: String = "5.6.2"
+    const val gradleLatestVersion: String = "6.0.1"
 }
 
 /**
