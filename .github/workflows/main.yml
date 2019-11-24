@@ -12,6 +12,11 @@ jobs:
         uses: actions/setup-java@v1
         with:
           java-version: 1.8
+      - name: Cache Gradle Dependencies
+        uses: actions/cache@v1
+        with:
+          path: .gradle
+          key: ${{ runner.OS }}-build-${{ hashFiles('**/Versions.kt') }}
       - name: Build with Gradle
         run: ./gradlew build
 
@@ -24,6 +29,11 @@ jobs:
         uses: actions/setup-java@v1
         with:
           java-version: 1.8
+      - name: Cache Gradle Dependencies
+        uses: actions/cache@v1
+        with:
+          path: .gradle
+          key: ${{ runner.OS }}-build-${{ hashFiles('**/Versions.kt') }}
       - name: Run Tests
         run: ./gradlew test
       - name: Generate Coverage Reports
