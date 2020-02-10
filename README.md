@@ -5,7 +5,7 @@ Kotlin library to generate URLs for [Google's Maps Static API][google-api-info].
 This library allow to set all parameters like markers in a type-safe way and generates a valid Maps Static url.
 The implementation follows [Google's official specifications][google-api-specs] and checks that all requirements are met before returning a url.
 
-## What is the Maps Static API and why it?
+## What is the Maps Static API and why use it?
 Google's Maps Static API is a REST API to create a static map (meaning a simple image file) using the given parameters (for more detailed info check the [official page][google-api-info]).
 There are situations where loading the maps View from the Maps SDK for Android is overkill or, if you need to display a lot of maps, just to resource heavy. While the Maps SDK has a Lite Mode
 (which is indeed very similar to what this does) that can still cause issues (especially in RecyclerViews) that a simple image doesn't have. Just put the out of this library into your favorite
