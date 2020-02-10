@@ -1,9 +1,16 @@
 # StatikGMapsAPI  [![](https://jitpack.io/v/com.ivoberger/StatikGMapsAPI.svg)](https://jitpack.io/#com.ivoberger/StatikGMapsAPI) [![codecov](https://codecov.io/gh/ivoberger/statikgmapsapi/branch/master/graph/badge.svg)](https://codecov.io/gh/ivoberger/statikgmapsapi)
 
 
-Kotlin library to generate URLs for Google's Static Maps API.
-This library allow to set all parameters like markers in a type-safe way and generates a valid static maps url.
-The implementation follows [Google's officical specifications][google-api-specs] and checks that all requirements are met before returning a url.
+Kotlin library to generate URLs for [Google's Maps Static API][google-api-info].
+This library allow to set all parameters like markers in a type-safe way and generates a valid Maps Static url.
+The implementation follows [Google's official specifications][google-api-specs] and checks that all requirements are met before returning a url.
+
+## What is the Maps Static API and why it?
+Google's Maps Static API is a REST API to create a static map (meaning a simple image file) using the given parameters (for more detailed info check the [official page][google-api-info]).
+There are situations where loading the maps View from the Maps SDK for Android is overkill or, if you need to display a lot of maps, just to resource heavy. While the Maps SDK has a Lite Mode
+(which is indeed very similar to what this does) that can still cause issues (especially in RecyclerViews) that a simple image doesn't have. Just put the out of this library into your favorite
+image loading library (I recommend [Coil][coil]) and you're done!
+Downsides are that you can't tap markers and that the Maps Static API is [not free][google-api-pricing] (you do get a $200/month credit though).
 
 ## Features
 
@@ -129,12 +136,15 @@ dependencies {
 
 
 
+[google-api-info]: https://developers.google.com/maps/documentation/maps-static/intro
 [google-api-specs]: https://developers.google.com/maps/documentation/maps-static/dev-guide
 [google-api-params]: https://developers.google.com/maps/documentation/maps-static/dev-guide#URL_Parameters
 [google-api-locations]: https://developers.google.com/maps/documentation/maps-static/dev-guide#StatikMapsLocations
 [google-api-url]: https://developers.google.com/maps/documentation/maps-static/dev-guide#url-size-restriction
+[google-api-pricing]: https://developers.google.com/maps/documentation/maps-static/usage-and-billing
 [google-maps-styling]: https://developers.google.com/maps/documentation/maps-static/styling
 [google-api-imagesize]: https://developers.google.com/maps/documentation/maps-static/dev-guide#Imagesizes
 [google-enc-algo]: https://developers.google.com/maps/documentation/utilities/polylinealgorithm
 [google-maps-premium]: https://developers.google.com/maps/premium/
 [rdp-algo]: https://en.wikipedia.org/wiki/Ramer%E2%80%93Douglas%E2%80%93Peucker_algorithm
+[coil]: https://coil-kt.github.io/coil/
