@@ -80,3 +80,19 @@ fun StatikGMapsUrl.visible(latLng: LatLng) = visible.add(latLng.toStatikMapsLoca
  * Adds the given [Location] to [StatikGMapsUrl.visible]
  */
 fun StatikGMapsUrl.visible(location: Location) = visible.add(location.toStatikMapsLocation())
+
+/**
+ * Sets [StatikGMapsUrl.visible] to the given [List] of [LatLng]
+ */
+@JvmName(name = "setVisibleFromLatLng")
+fun StatikGMapsUrl.visible(visible: List<LatLng>) {
+    this.visible = visible.map { it.toStatikMapsLocation() }.toMutableList()
+}
+
+/**
+ * Sets [StatikGMapsUrl.visible] to the given [List] of [Location]
+ */
+@JvmName(name = "setVisibleFromLocations")
+fun StatikGMapsUrl.visible(visible: List<Location>) {
+    this.visible = visible.map { it.toStatikMapsLocation() }.toMutableList()
+}
