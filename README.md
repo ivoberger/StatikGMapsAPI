@@ -1,4 +1,4 @@
-# StatikGMapsAPI  [![](https://jitpack.io/v/com.ivoberger/StatikGMapsAPI.svg)](https://jitpack.io/#com.ivoberger/StatikGMapsAPI) [![codecov](https://codecov.io/gh/ivoberger/statikgmapsapi/branch/master/graph/badge.svg)](https://codecov.io/gh/ivoberger/statikgmapsapi)
+# StatikGMapsAPI  [![](https://jitpack.io/v/com.ivoberger/StatikGMapsAPI.svg)](https://jitpack.io/#com.ivoberger/StatikGMapsAPI) ![Build & Test](https://github.com/ivoberger/StatikGMapsAPI/workflows/Build%20&%20Test/badge.svg?branch=master) [![codecov](https://codecov.io/gh/ivoberger/statikgmapsapi/branch/master/graph/badge.svg)](https://codecov.io/gh/ivoberger/statikgmapsapi)
 
 
 Kotlin library to generate URLs for [Google's Maps Static API][google-api-info].
