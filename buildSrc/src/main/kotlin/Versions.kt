@@ -1,3 +1,4 @@
+import kotlin.String
 import org.gradle.plugin.use.PluginDependenciesSpec
 import org.gradle.plugin.use.PluginDependencySpec
 
@@ -13,11 +14,11 @@ import org.gradle.plugin.use.PluginDependencySpec
 object Versions {
     const val com_google_android_gms: String = "17.0.0"
 
-    const val org_jetbrains_kotlin: String = "1.3.60"
+    const val org_jetbrains_kotlin: String = "1.3.61"
 
     const val org_jetbrains_dokka: String = "0.9.18"
 
-    const val com_android_tools_build_gradle: String = "3.5.2"
+    const val com_android_tools_build_gradle: String = "3.5.3"
 
     const val de_fayard_buildsrcversions_gradle_plugin: String = "0.7.0"
 
@@ -27,9 +28,9 @@ object Versions {
 
     const val jacoco_android: String = "0.1.4"
 
-    const val lint_gradle: String = "26.5.2"
+    const val lint_gradle: String = "26.5.3"
 
-    const val aapt2: String = "3.5.2-5435860"
+    const val aapt2: String = "3.5.3-5435860"
 
     /**
      * Current version: "5.6.2"
@@ -45,4 +46,4 @@ object Versions {
  */
 val PluginDependenciesSpec.buildSrcVersions: PluginDependencySpec
     inline get() =
-        id("de.fayard.buildSrcVersions").version(Versions.de_fayard_buildsrcversions_gradle_plugin)
+            id("de.fayard.buildSrcVersions").version(Versions.de_fayard_buildsrcversions_gradle_plugin)

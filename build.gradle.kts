@@ -65,8 +65,9 @@ tasks {
         gradleVersion = Versions.gradleLatestVersion
         distributionType = Wrapper.DistributionType.ALL
     }
-    named<BuildSrcVersionsTask>("buildSrcVersions") {
-        finalizedBy(wrapper)
-    }
+//    Paused until jaooco-android is updated to work with gradle 6
+//    named<BuildSrcVersionsTask>("buildSrcVersions") {
+//        finalizedBy(wrapper)
+//    }
 }
 
