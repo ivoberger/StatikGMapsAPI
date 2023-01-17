@@ -39,6 +39,6 @@ jobs:
       - name: Generate Coverage Reports
         run: ./gradlew jacocoTestReport --no-daemon
       - name: Upload Coverage Reports to CodeCov
-        uses: codecov/codecov-action@v1
+        uses: codecov/codecov-action@v3
         with:
           token: ${{secrets.CODECOV_TOKEN}}
