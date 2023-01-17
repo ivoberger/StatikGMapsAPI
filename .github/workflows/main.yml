@@ -8,36 +8,30 @@ jobs:
 
     steps:
       - uses: actions/checkout@v1
-      - name: Set up JDK 1.8
+      - name: Set up JDK
         uses: actions/setup-java@v3
         with:
-          java-version: 1.8
-      - name: Cache Gradle Dependencies
-        uses: actions/cache@v3
-        with:
-          path: ~/.gradle/caches
-          key: build-${{ hashFiles('**/Versions.kt') }}
+          java-version: 11
+          distribution: "temurin"
+          cache: "gradle"
       - name: Build with Gradle
-        run: ./gradlew build
+        run: ./gradlew build --no-daemon
 
   Test:
     runs-on: ubuntu-latest
 
     steps:
       - uses: actions/checkout@v1
-      - name: Set up JDK 1.8
+      - name: Set up JDK
         uses: actions/setup-java@v3
         with:
-          java-version: 1.8
-      - name: Cache Gradle Dependencies
-        uses: actions/cache@v3
-        with:
-          path: ~/.gradle/caches
-          key: test-${{ hashFiles('**/Versions.kt') }}
+          java-version: 11
+          distribution: "temurin"
+          cache: "gradle"
       - name: Run Tests
-        run: ./gradlew test
+        run: ./gradlew test --no-daemon
       - name: Generate Coverage Reports
-        run: ./gradlew jacocoTestReport
+        run: ./gradlew jacocoTestReport --no-daemon
       - name: Upload Coverage Reports to CodeCov
         uses: codecov/codecov-action@v1
         with:
