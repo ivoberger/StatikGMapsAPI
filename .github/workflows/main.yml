@@ -13,7 +13,7 @@ jobs:
         with:
           java-version: 1.8
       - name: Cache Gradle Dependencies
-        uses: actions/cache@v1
+        uses: actions/cache@v3
         with:
           path: ~/.gradle/caches
           key: build-${{ hashFiles('**/Versions.kt') }}
@@ -30,7 +30,7 @@ jobs:
         with:
           java-version: 1.8
       - name: Cache Gradle Dependencies
-        uses: actions/cache@v1
+        uses: actions/cache@v3
         with:
           path: ~/.gradle/caches
           key: test-${{ hashFiles('**/Versions.kt') }}
