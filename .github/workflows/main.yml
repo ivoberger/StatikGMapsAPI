@@ -5,13 +5,16 @@ on: [push]
 jobs:
   Build:
     runs-on: ubuntu-latest
-
+    strategy:
+      matrix:
+        java: ["8", "11"]
+    name: Build on Java ${{ matrix.Java }}
     steps:
       - uses: actions/checkout@v1
       - name: Set up JDK
         uses: actions/setup-java@v3
         with:
-          java-version: 11
+          java-version: ${{ matrix.Java }}
           distribution: "temurin"
           cache: "gradle"
       - name: Build with Gradle
@@ -19,13 +22,16 @@ jobs:
 
   Test:
     runs-on: ubuntu-latest
-
+    strategy:
+      matrix:
+        java: ["8", "11"]
+    name: Test on Java ${{ matrix.Java }}
     steps:
       - uses: actions/checkout@v1
       - name: Set up JDK
         uses: actions/setup-java@v3
         with:
-          java-version: 11
+          java-version: ${{ matrix.Java }}
           distribution: "temurin"
           cache: "gradle"
       - name: Run Tests
