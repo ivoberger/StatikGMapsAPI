@@ -10,7 +10,7 @@ jobs:
         java: ["8", "11"]
     name: Build on Java ${{ matrix.Java }}
     steps:
-      - uses: actions/checkout@v1
+      - uses: actions/checkout@v3
       - name: Set up JDK
         uses: actions/setup-java@v3
         with:
@@ -27,7 +27,7 @@ jobs:
         java: ["8", "11"]
     name: Test on Java ${{ matrix.Java }}
     steps:
-      - uses: actions/checkout@v1
+      - uses: actions/checkout@v3
       - name: Set up JDK
         uses: actions/setup-java@v3
         with:
