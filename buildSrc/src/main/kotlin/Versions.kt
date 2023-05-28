@@ -16,7 +16,7 @@ object Versions {
 
     const val org_jetbrains_kotlin: String = "1.3.61"
 
-    const val org_jetbrains_dokka: String = "0.9.18"
+    const val org_jetbrains_dokka: String = "0.10.1"
 
     const val com_android_tools_build_gradle: String = "3.5.3"
 
