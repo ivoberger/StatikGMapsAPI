@@ -18,7 +18,7 @@ object Versions {
 
     const val org_jetbrains_dokka: String = "0.9.18"
 
-    const val com_android_tools_build_gradle: String = "3.5.3"
+    const val com_android_tools_build_gradle: String = "8.7.1"
 
     const val de_fayard_buildsrcversions_gradle_plugin: String = "0.7.0"
 
