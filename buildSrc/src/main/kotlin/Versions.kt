@@ -30,7 +30,7 @@ object Versions {
 
     const val lint_gradle: String = "26.5.3"
 
-    const val aapt2: String = "3.5.3-5435860"
+    const val aapt2: String = "8.7.1-12006047"
 
     /**
      * Current version: "5.6.2"
