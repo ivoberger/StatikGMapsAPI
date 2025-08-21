@@ -14,7 +14,7 @@ import org.gradle.plugin.use.PluginDependencySpec
 object Versions {
     const val com_google_android_gms: String = "17.0.0"
 
-    const val org_jetbrains_kotlin: String = "1.3.61"
+    const val org_jetbrains_kotlin: String = "1.9.25"
 
     const val org_jetbrains_dokka: String = "0.9.18"
 
