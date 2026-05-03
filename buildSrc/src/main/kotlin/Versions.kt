@@ -28,7 +28,7 @@ object Versions {
 
     const val jacoco_android: String = "0.1.4"
 
-    const val lint_gradle: String = "26.5.3"
+    const val lint_gradle: String = "32.2.0"
 
     const val aapt2: String = "3.5.3-5435860"
 
